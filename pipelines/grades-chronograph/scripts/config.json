@@ -1,0 +1,32 @@
+{
+  "application": "./demos/streamer-test",
+  "worker": {
+    "clusterId": "chronograph"
+  },
+  "logPath": "./logs",
+  "webInterface": {
+    "enabled": false,
+    "port": 8000
+  },
+  "processing": {
+    "enabled": false
+  },
+  "messaging": {
+    "bufferSize": 50000,
+    "receiveSize": 5000,
+    "bypassLocal": false,
+    "microBatchSize": 500,
+    "kafka": {
+      "enabled": true,
+      "broker": "kafka:9092"
+    }
+  },
+  "debug": {
+    "waitPeriod": 5000,
+    "detectHalt": true,
+    "runtimeLog": false,
+    "performance": {
+      "profiling": false
+    }
+  }
+}

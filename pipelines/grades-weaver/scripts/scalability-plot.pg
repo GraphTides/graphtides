@@ -1,0 +1,51 @@
+#!/usr/bin/gnuplot
+
+set output "scalability-plot.pdf"
+set terminal pdfcairo size 6cm,2.6cm font ",8"
+
+set style line 7 lt 1 dt 1 ps 0.5 lc rgb '#A32638'
+set style line 8 lt 1 dt 1 ps 0.2 lc rgb '#DF6D07'
+
+set style line 4 lt 1 dt 1 ps 0.5 lc rgb '#26547C'
+set style line 5 lt 1 dt 1 ps 0.2 lc rgb '#56AA1C'
+
+set style line 1 lt 1 dt 1 ps 0.5 lc rgb '#A9A28D'
+set style line 2 lt 1 dt 1 ps 0.2 lc rgb '#7D9AAA'
+
+
+set style line 3 lt 1 dt 3 pt 0 ps 0.5 lc rgb '#DF6D07'
+set style line 6 lt 1 dt 3 pt 0 ps 0.5 lc rgb '#56AA1C'
+set style line 9 lt 1 dt 3 pt 0 ps 0.5 lc rgb '#A32638'
+
+set logscale y
+# set yrange[0:30000]
+set xrange[0:556]
+
+set xzeroaxis
+# set xtics format ""
+set ytics format "  10^{%L}"
+#set ytics("1e2" 100, "1e3" 1000, "1e4" 10000)
+set ylabel "throughput [events/s]"
+set xlabel "time [s]"
+
+set key above right vertical maxrows 2 spacing 1.4 samplen 1.5
+
+set multiplot
+plot '/input/results/results-100.txt' with lines ls 1 title " 10^2",\
+     '/input/results/results-aggregate-100.txt' with lines ls 2 title " 10^2",\
+     '/input/results/results-1000.txt' with lines ls 4 title " 10^3",\
+     '/input/results/results-aggregate-1000.txt' with lines ls 5 title " 10^3",\
+     '/input/results/results-10000.txt' with lines ls 7 title " 10^4",\
+     '/input/results/results-aggregate-10000.txt' with lines ls 8 title " 10^4"
+
+unset title
+unset xlabel
+unset ylabel
+unset border
+unset tics
+
+plot 1 lc "0xFF0000FF" title " 1  evt/tx, streaming rate [evts/s]:                                         ",\
+     1 lc "0xFF0000FF" title "10 evts/tx, streaming rate [evts/s]:                                         "
+
+#     -2 with linespoints ls 1 dt 2 pt 2 lc rgb "#000000" title "10 evts/tx"
+#     -2 with linespoints ls 1 dt 1 lc rgb "#000000" title "1 evt/tx"

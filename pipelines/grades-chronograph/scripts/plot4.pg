@@ -1,0 +1,24 @@
+#!/usr/bin/gnuplot
+
+set output "plot4.pdf"
+set terminal pdfcairo size 11cm,2cm font ",8"
+
+set style line 1 lt 1 dt 1 pt 0 lc rgb '#56AA1C'
+set style line 2 lt 1 dt 1 pt 0 lc rgb '#DF6D07'
+set style line 3 lt 1 dt 1 pt 0 lc rgb '#A32638'
+set style line 4 lt 1 dt 1 pt 0 lc rgb '#26547C'
+
+set boxwidth .6
+set style fill solid 0.50 border 0
+
+set grid ytics
+
+set ylabel "worker queue\nlength"
+set xrange [0:300]
+set xtics format ""
+set ytics add ("      0" 0)
+
+plot '/input/buffer-perf-0.log' with lines ls 1 notitle,\
+     '/input/buffer-perf-1.log' with lines ls 2 notitle,\
+     '/input/buffer-perf-2.log' with lines ls 3 notitle,\
+     '/input/buffer-perf-3.log' with lines ls 4 notitle

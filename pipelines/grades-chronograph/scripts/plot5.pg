@@ -1,0 +1,18 @@
+#!/usr/bin/gnuplot
+
+set output "plot5.pdf"
+set terminal pdfcairo size 11cm,1.6cm font ",8"
+
+set style line 1 lt 1 dt 1 pt 0 lc rgb '#000000'
+set boxwidth .6
+set style fill solid 0.50 border 0
+set grid ytics
+set ylabel "relative rank\nerror [%]"
+set xlabel "time [s]"
+set xrange [0:300]
+set yrange [0:1]
+
+# set key above right
+set ytics ("      0" 0, ".25" .25, ".5" .5, ".75" .75, "1" 1)
+
+plot '/input/rank-error.csv' with lines ls 1 notitle

@@ -1,0 +1,29 @@
+#!/usr/bin/gnuplot
+
+set output "cpu-plot.pdf"
+set terminal pdfcairo size 6cm,1.67cm font ",8"
+
+set style line 3 lt 1 dt 1 pt 0 lc rgb '#56AA1C' # uulm-mawi
+set style line 2 lt 1 dt 1 pt 0 lc rgb '#DF6D07' # uulm-nawi
+
+set boxwidth .6
+set style fill solid 0.50 border 0
+
+# set logscale y
+set yrange[0:100]
+set xrange[0:556]
+
+set xzeroaxis
+set ylabel "cpu utilization [%]"
+set xlabel "time [s]"
+set ytics("   0" 0, "50" 50, "100" 100, "150" 150, "200" 200)
+
+set key above right vertical maxrows 1
+
+plot \
+  for [i=2:3:1] \
+          "/input/cpu.txt" using 1:(sum [col=i:3] column(col)) notitle with filledcurves x1 ls i, \
+  for [i=2:3:1] \
+          "/input/cpu.txt" using 1:(sum [col=i:3] column(col)) notitle with lines ls i lt -1 lw 0.5, \
+  -2 with boxes title "weaver-timestamper" ls 2,\
+  -2 with boxes title "weaver-shard" ls 3

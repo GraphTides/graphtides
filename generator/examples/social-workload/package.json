@@ -1,0 +1,25 @@
+{
+  "name": "social-workload",
+  "version": "1.0.0",
+  "description": "Example specification of a social graph workload.",
+  "homepage": "https://graphtides.github.io",
+  "bugs": {
+    "url": "https://github.com/graphtides/graphtides/issues"
+  },
+  "repository": "github:graphtides/graphtides.git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dominik Meißner <dominik.meissner@uni-ulm.de> (https://uni-ulm.de/in/vs/meissner)",
+  "contributors": [
+    "Dominik Meißner <dominik.meissner@uni-ulm.de> (https://uni-ulm.de/in/vs/meissner)",
+    "Benjamin Erb <benjamin.erb@uni-ulm.de> (https://uni-ulm.de/in/vs/erb)"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "chance": "^1.0.12",
+    "redis-sorted-set": "^2.0.0"
+  }
+}

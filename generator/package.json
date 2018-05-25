@@ -1,0 +1,35 @@
+{
+  "name": "generator",
+  "version": "1.0.0",
+  "description": "Generates a random event stream of a graph with specific properties.",
+  "homepage": "https://graphtides.github.io",
+  "bugs": {
+    "url": "https://github.com/graphtides/graphtides/issues"
+  },
+  "repository": "github:graphtides/graphtides.git",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node_modules/ts-node/dist/bin.js src/index.ts",
+    "test": "node_modules/typescript/bin/tsc --noEmit"
+  },
+  "author": "Dominik Meißner <dominik.meissner@uni-ulm.de> (https://uni-ulm.de/in/vs/meissner)",
+  "contributors": [
+    "Dominik Meißner <dominik.meissner@uni-ulm.de> (https://uni-ulm.de/in/vs/meissner)",
+    "Benjamin Erb <benjamin.erb@uni-ulm.de> (https://uni-ulm.de/in/vs/erb)"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "level": "^2.0.1",
+    "minimist": "^1.2.0",
+    "prob.js": "^1.0.6",
+    "progress": "^2.0.0",
+    "random-js": "^1.0.8",
+    "seedrandom": "^2.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.54",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.2"
+  }
+}

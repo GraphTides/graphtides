@@ -1,0 +1,32 @@
+metadata: {}
+pipelines:
+  grades-throughput:
+    envs:
+    - host
+    path: pipelines/grades-throughput
+    stages:
+    - setup
+    - run
+    - post-run
+    - validate
+    - teardown
+  grades-weaver:
+    envs:
+    - host
+    path: pipelines/grades-weaver
+    stages:
+    - setup
+    - run
+    - post-run
+    - validate
+    - teardown
+  grades-chronograph:
+    envs:
+    - host
+    path: pipelines/grades-chronograph
+    stages:
+    - setup
+    - run
+    - post-run
+    - validate
+    - teardown

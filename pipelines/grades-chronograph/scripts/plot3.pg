@@ -1,0 +1,25 @@
+#!/usr/bin/gnuplot
+
+set output "plot3.pdf"
+set terminal pdfcairo size 11cm,2cm font ",8"
+
+set style line 5 lt 1 dt 1 pt 0 lc rgb '#56AA1C'
+set style line 4 lt 1 dt 1 pt 0 lc rgb '#DF6D07'
+set style line 3 lt 1 dt 1 pt 0 lc rgb '#A32638'
+set style line 2 lt 1 dt 1 pt 0 lc rgb '#26547C'
+
+set boxwidth .6
+set style fill solid 0.50 border 0
+
+set grid ytics
+
+set ylabel "cpu utilization\n[%]"
+set xrange [0:300]
+set xtics format ""
+set ytics add ("      0" 0)
+
+plot \
+  for [i=2:5:1] \
+          "/input/cpulogs.txt" using 1:(sum [col=i:5] column(col)) notitle with filledcurves x1 ls i, \
+  for [i=2:6:1] \
+          "/input/cpulogs.txt" using 1:(sum [col=i:5] column(col)) notitle with lines ls i lt -1 lw 0.5

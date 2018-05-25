@@ -1,0 +1,27 @@
+#!/usr/bin/gnuplot
+
+set output "plot1.pdf"
+set terminal pdfcairo size 11cm,2cm font ",8"
+
+set style line 1 lt 1 dt 1 pt 0 lc rgb '#000000'
+
+set boxwidth .6
+set style fill solid 0.50 border 0
+
+set arrow from 50.5, graph 0 to 50.5, graph 1 nohead lc rgb '#A32638'
+set arrow from 70.5, graph 0 to 70.5, graph 1 nohead lc rgb '#A32638'
+set arrow from 83.5, graph 0 to 83.5, graph 1 nohead lc rgb '#A32638'
+
+set grid ytics
+
+set ylabel "replay rate\n[events/s]"
+set xrange [0:300]
+
+set xtics format ""
+set ytics add ("      0" 0)
+
+plot '/input/streamer-log-processed.txt' with lines ls 1 notitle, \
+     2 with boxes ls 1 lc rgb "#56AA1C" title "worker 1", \
+     2 with boxes ls 1 lc rgb "#DF6D07" title "worker 2", \
+     2 with boxes ls 1 lc rgb "#A32638" title "worker 3", \
+     2 with boxes ls 1 lc rgb "#26547C" title "worker 4"
